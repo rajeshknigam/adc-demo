@@ -1,0 +1,621 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "PFM Cancellation of Scheduled TXN API",
+    "version": "1.0.0",
+    "title": "Swagger PFM Cancellation",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "dna-adc@hcl.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "35.167.56.194:8080",
+  "basePath": "/v2",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/scheduledtxn": {
+      "post": {
+        "tags": [
+          "scheduledtxn"
+        ],
+        "summary": "Add a new scheduled txn ",
+        "description": "",
+        "operationId": "addScheduledtxn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Scheduled txn that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Scheduledtxn"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "scheduledtxn"
+        ],
+        "summary": "Update an existing Scheduledtxn",
+        "description": "",
+        "operationId": "updateScheduledtxn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Scheduled txn  that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Scheduledtxn"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/scheduledtxn/{scheduledtxn}": {
+      "get": {
+        "tags": [
+          "scheduledtxn"
+        ],
+        "summary": "Find Scheduledtxn by ID",
+        "description": "Returns a single Scheduledtxn",
+        "operationId": "getScheduledTxnById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "scheduledtxn",
+            "in": "path",
+            "description": "ID of Scheduledtxn to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Scheduledtxn"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Scheduledtxn not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "scheduledtxn"
+        ],
+        "summary": "Deletes a Scheduledtxn",
+        "description": "",
+        "operationId": "deleteScheduledtxn",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "scheduledtxn",
+            "in": "path",
+            "description": "Scheduledtxn id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Scheduledtxn not found"
+          }
+        }
+      }
+    },
+    "/scheduledtxn/customer/{customerid}": {
+      "get": {
+        "tags": [
+          "scheduledtxn"
+        ],
+        "summary": "Find scheduledtxn by customer ID",
+        "description": "",
+        "operationId": "getScheduledtxnByCustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customerid",
+            "in": "path",
+            "description": "ID of customerid for which trx to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Scheduledtxn"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        }
+      }
+    },
+    "/completedtxn": {
+      "post": {
+        "tags": [
+          "completedtxn"
+        ],
+        "summary": "Add a new completed txn ",
+        "description": "",
+        "operationId": "addCompletedtxn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Completed txn that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Completedtxn"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "completedtxn"
+        ],
+        "summary": "Update an existing Completedtxn",
+        "description": "",
+        "operationId": "updateCompletedtxn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Completed txn  that needs to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Completedtxn"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/completedtxn/{completedtxn}": {
+      "get": {
+        "tags": [
+          "completedtxn"
+        ],
+        "summary": "Find Completedtxn by ID",
+        "description": "Returns a single Completedtxn",
+        "operationId": "getCompletedTxnById",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "completedtxn",
+            "in": "path",
+            "description": "ID of Completedtxn to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Completedtxn"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Completedtxn not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "completedtxn"
+        ],
+        "summary": "Deletes a Completedtxn",
+        "description": "",
+        "operationId": "deleteCompletedtxn",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "completedtxn",
+            "in": "path",
+            "description": "Completedtxn id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Completedtxn not found"
+          }
+        }
+      }
+    },
+    "/completedtxn/customer/{customerid}": {
+      "get": {
+        "tags": [
+          "completedtxn"
+        ],
+        "summary": "Find completedtxn by customer ID",
+        "description": "",
+        "operationId": "getCompletedtxnByCustomerId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customerid",
+            "in": "path",
+            "description": "ID of customerid for which trx to be fetched",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Completedtxn"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Customer not found"
+          }
+        }
+      }
+    },
+    "/customer": {
+      "post": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Create customer",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createCustomer",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created customer object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/customer/{id}": {
+      "get": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Get user by customer id",
+        "description": "",
+        "operationId": "getcustomerByID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The id that needs to be fetched.",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          },
+          "400": {
+            "description": "Invalid username supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Updated customer",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateCustomer",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id that need to be updated",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Updated customer object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Customer"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid user supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "customer"
+        ],
+        "summary": "Delete customer",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deleteCustomer",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The name that needs to be deleted",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid username supplied"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Customer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "customername": {
+          "type": "string"
+        },
+        "accountnumber": {
+          "type": "string"
+        },
+        "accounttype": {
+          "type": "string"
+        },
+        "accountbalance": {
+          "type": "integer"
+        }
+      }
+    },
+    "Scheduledtxn": {
+      "type": "object",
+      "required": [
+        "txndate"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "txndate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "doggie"
+        },
+        "merchant": {
+          "type": "string",
+          "example": "doggie"
+        },
+        "txnvalue": {
+          "type": "integer",
+          "example": "100",
+          "format": "int64"
+        },
+        "startdate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "01/01/2019"
+        },
+        "enddate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "12/12/2019"
+        },
+        "paymentcount": {
+          "type": "integer",
+          "example": "12",
+          "format": "int64"
+        },
+        "totalvalue": {
+          "type": "integer",
+          "example": "1200",
+          "format": "int64"
+        }
+      }
+    },
+    "Completedtxn": {
+      "type": "object",
+      "required": [
+        "txndate"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "txndate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "doggie"
+        },
+        "merchant": {
+          "type": "string",
+          "example": "doggie"
+        },
+        "txnvalue": {
+          "type": "integer",
+          "example": "100",
+          "format": "int64"
+        },
+        "startdate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "01/01/2019"
+        },
+        "enddate": {
+          "type": "string",
+          "format": "date-time",
+          "example": "12/12/2019"
+        },
+        "paymentcount": {
+          "type": "integer",
+          "example": "12",
+          "format": "int64"
+        },
+        "totalvalue": {
+          "type": "integer",
+          "example": "1200",
+          "format": "int64"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
